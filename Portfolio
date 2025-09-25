@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>يوسف هاني — بورتفوليو</title>
+  <meta name="description" content="يوسف هاني — جرافيك ديزاينر، مونتير ومصمم مواقع. بورتفوليو أعمال وتصاميم." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #070708;
+      --card: #0f1113;
+      --muted: #a9b0b8;
+      --accent1: #00ffd5;
+      --accent2: #60a5fa;
+      --glass: rgba(255,255,255,0.03);
+      --radius: 16px;
+      --max-width: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.06), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(0,255,213,0.03), transparent),
+                  var(--bg);
+      color:#fff;
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      padding:28px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{max-width:var(--max-width);width:100%}
+
+    /* Header */
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+      margin-bottom:28px;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{
+      width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:grid;place-items:center;font-weight:800;color:#021024;font-size:18px;
+      box-shadow:0 6px 24px rgba(0,0,0,0.6), inset 0 -4px 18px rgba(255,255,255,0.02);
+    }
+    .brand .name{font-weight:700}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;transition:all .18s; font-weight:600}
+    nav a:hover{background:rgba(255,255,255,0.02);color:#fff; transform:translateY(-2px)}
+
+    /* Profile card */
+    .profile-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+      border-radius:18px;
+      padding:28px;
+      position:relative;
+      overflow:visible;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:24px;
+      align-items:center;
+    }
+
+    /* responsive stack */
+    @media(max-width:900px){
+      .profile-card{grid-template-columns:1fr; text-align:center}
+      .hero-right{order: -1}
+      nav{display:none}
+    }
+
+    .hero-left h1{font-size:28px;margin:0 0 6px}
+    .hero-left p{margin:0;color:var(--muted);line-height:1.6}
+    .badges{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+    .badge{background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:999px;font-weight:600;color:var(--muted);font-size:13px}
+
+    /* profile image like facebook (overlapping circle) */
+    .hero-right{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .avatar{
+      width:150px;height:150px;border-radius:50%;overflow:hidden;border:6px solid rgba(2,16,36,0.75);
+      box-shadow: 0 12px 40px rgba(2,16,36,0.7), 0 4px 20px rgba(0,0,0,0.6);
+      transform: translateY(-60px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .contact-quick{display:flex;gap:10px;margin-top:6px}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021024;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:700;display:inline-block}
+    .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:12px;color:var(--muted);text-decoration:none;font-weight:700}
+
+    /* Sections */
+    section{margin-top:34px}
+    .section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+    .section-head h2{margin:0;font-size:20px}
+    .section-sub{color:var(--muted);font-size:14px}
+
+    /* projects grid */
+    .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+    .project{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      border-radius:12px;overflow:hidden;padding:0;
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+    .project:hover{transform:translateY(-8px); box-shadow: 0 18px 60px rgba(2,16,36,0.6)}
+    .project img{width:100%;height:150px;object-fit:cover;display:block}
+    .project .proj-meta{padding:12px}
+    .proj-title{font-weight:700;margin-bottom:6px}
+    .proj-desc{color:var(--muted);font-size:14px}
+
+    /* skills */
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill-pill{background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.02);font-weight:600;color:var(--muted)}
+
+    /* contact card */
+    .contact-card{background:var(--card);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .contact-card input,.contact-card textarea{
+      width:100%;padding:12px;border-radius:8px;border:none;background:rgba(255,255,255,0.02);color:#fff;margin-top:8px;resize:vertical;
+    }
+    .contact-card button{margin-top:10px;padding:12px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));font-weight:700;color:#021024;cursor:pointer}
+
+    /* footer */
+    footer{margin:46px 0 24px;color:var(--muted);text-align:center;font-size:14px}
+
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .center{display:flex;justify-content:center;align-items:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- header -->
+    <header>
+      <div class="brand">
+        <div class="logo">YH</div>
+        <div>
+          <div class="name">يوسف هاني</div>
+          <div class="muted" style="font-size:13px">جرافيك ديزاينر — مونتير — مصمم مواقع</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#about">عنّي</a>
+        <a href="#work">الأعمال</a>
+        <a href="#contact">تواصل</a>
+      </nav>
+    </header>
+
+    <!-- profile card -->
+    <main class="profile-card" id="home" aria-label="بطاقة الملف الشخصي">
+      <div class="hero-left">
+        <h1>أنا يوسف هاني</h1>
+        <p>مصمم جرافيك ومونتير ومطور واجهات مواقع بسيطة — أركز على هويات بصرية قوية وفيديوهات قصيرة تجذب المشاهد.</p>
+
+        <div class="badges" aria-hidden="true">
+          <div class="badge">Branding</div>
+          <div class="badge">Motion Design</div>
+          <div class="badge">Shorts & Reels</div>
+          <div class="badge">Web Design</div>
+        </div>
+
+        <div style="margin-top:20px" class="row">
+          <a class="btn-primary" href="#contact">اطلب خدمة</a>
+          <a class="btn-outline" href="#work">شاهد أعمالي</a>
+        </div>
+
+        <div style="margin-top:20px" class="muted">متاح للعمل الحر — تواصل سريع عبر الواتساب أو الإيميل.</div>
+      </div>
+
+      <aside class="hero-right" aria-hidden="false">
+        <!-- صورة بروفايل وهمية: استبدل الرابط بصورة حقيقية عندك -->
+        <div class="avatar">
+          <!-- placeholder avatar -->
+          <img src="https://i.pravatar.cc/320?img=12" alt="صورة يوسف هاني">
+        </div>
+
+        <div style="text-align:center;margin-top:-20px">
+          <div style="font-weight:800">يوسف هاني</div>
+          <div class="muted" style="font-size:13px">جرافيك ديزاينر — مونتير</div>
+        </div>
+
+        <div class="contact-quick">
+          <a class="btn-primary" href="mailto:youssefhany049@gmail.com">إيميل</a>
+          <a class="btn-outline" href="https://wa.me/201022484250" target="_blank" rel="noopener">واتساب</a>
+        </div>
+      </aside>
+    </main>
+
+    <!-- about -->
+    <section id="about" aria-labelledby="about-head">
+      <div class="section-head">
+        <h2 id="about-head">عنّي</h2>
+        <div class="section-sub muted">قصة قصيرة عنك وتخصصك — استبدل النص بما يناسبك</div>
+      </div>
+      <p class="muted">
+        اسمي يوسف هاني — أعمل كمصمم جرافيك ومونتير ومطور واجهات. أحب التصميم النظيف والواضح، وأستخدم أدوات مثل Photoshop, Illustrator, Premiere, After Effects، بالإضافة للـ HTML/CSS وJavaScript لتسليم مواقع بسيطة وسريعة.
+        <br><br>
+        أقدم خدمات: هوية بصرية، تصميم شعارات، بوسترات، إخراج فيديوهات شورت، وإنشاء صفحات بورتفوليو شخصية.
+      </p>
+    </section>
+
+    <!-- work / projects -->
+    <section id="work" aria-labelledby="work-head">
+      <div class="section-head">
+        <h2 id="work-head">أعمالي</h2>
+        <div class="section-sub muted">أمثلة أعمال وهمية — استبدل الصور والوصف بأعمالك الحقيقية</div>
+      </div>
+
+      <div class="projects" role="list">
+        <!-- مشروع 1 -->
+        <article class="project" role="listitem">
+          <img src="https://picsum.photos/seed/p1/800/500" alt="مشروع: تصميم شعار">
+          <div class="proj-meta">
+            <div class="proj-title">هوية بصرية لشركة ناشئة</div>
+            <div class="proj-desc muted">تصميم شعار وهوية كاملة للاستخدام على السوشال والمطبوعات.</div>
+          </div>
+        </article>
+
+        <!-- مشروع 2 -->
+        <article class="project" role="listitem">
+          <img src="https://picsum.photos/seed/p2/800/500" alt="مشروع: بوستر">
+          <div class="proj-meta">
+            <div class="proj-title">بوستر حملة تسويقية</div>
+            <div class="proj-desc muted">تصميم بوستر رقمي جاهز للنشر على فيسبوك وإنستجرام.</div>
+          </div>
+        </article>
+
+        <!-- مشروع 3 -->
+        <article class="project" role="listitem">
+          <img src="https://picsum.photos/seed/p3/800/500" alt="مشروع: مونتاج فيديو">
+          <div class="proj-meta">
+            <div class="proj-title">مونتاج فيديو ترويجي</div>
+            <div class="proj-desc muted">تقطيع، تلوين، وإضافة حركات نصية لجذب المشاهد.</div>
+          </div>
+        </article>
+
+        <!-- مشروع 4 -->
+        <article class="project" role="listitem">
+          <img src="https://picsum.photos/seed/p4/800/500" alt="مشروع: ثيم موقع">
+          <div class="proj-meta">
+            <div class="proj-title">تصميم واجهة موقع</div>
+            <div class="proj-desc muted">واجهة بسيطة وبصرية لموقع شخصي/بزنس.</div>
+          </div>
+        </article>
+
+        <!-- مشروع 5 -->
+        <article class="project" role="listitem">
+          <img src="https://picsum.photos/seed/p5/800/500" alt="مشروع: قالب سوشيال">
+          <div class="proj-meta">
+            <div class="proj-title">قوالب سوشيال ميديا</div>
+            <div class="proj-desc muted">سلسلة تصاميم قابلة لإعادة الاستخدام على السوشيال.</div>
+          </div>
+        </article>
+
+        <!-- مشروع 6 -->
+        <article class="project" role="listitem">
+          <img src="https://picsum.photos/seed/p6/800/500" alt="مشروع: لوغو">
+          <div class="proj-meta">
+            <div class="proj-title">شعار بسيط وأنيق</div>
+            <div class="proj-desc muted">شعار متناسق مع دليل ألوان مختصر.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- skills -->
+    <section id="skills" aria-labelledby="skills-head">
+      <div class="section-head">
+        <h2 id="skills-head">المهارات</h2>
+        <div class="section-sub muted">المهارات الأساسية والأدوات</div>
+      </div>
+      <div class="skills">
+        <div class="skill-pill">Photoshop</div>
+        <div class="skill-pill">Illustrator</div>
+        <div class="skill-pill">After Effects</div>
+        <div class="skill-pill">Premiere Pro</div>
+        <div class="skill-pill">HTML &amp; CSS</div>
+        <div class="skill-pill">JavaScript (أساسيات)</div>
+        <div class="skill-pill">UI/UX Basics</div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" aria-labelledby="contact-head">
+      <div class="section-head">
+        <h2 id="contact-head">تواصل معي</h2>
+        <div class="section-sub muted">أسرع وسيلة: واتساب أو إيميل</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:20px">
+        <!-- form -->
+        <div class="contact-card">
+          <form onsubmit="sendMail(event)">
+            <label class="muted">اسمك</label>
+            <input id="c_name" type="text" placeholder="اسمك" required>
+            <label class="muted">بريدك</label>
+            <input id="c_email" type="email" placeholder="email@example.com" required>
+            <label class="muted">رسالتك</label>
+            <textarea id="c_msg" rows="6" placeholder="اكتب رسالتك..." required></textarea>
+            <button type="submit">إرسال عبر البريد</button>
+            <div id="sentMsg" style="margin-top:10px;color:#9ff;font-weight:700;display:none">سيتم فتح تطبيق البريد لإرسال الرسالة...</div>
+          </form>
+        </div>
+
+        <!-- quick contact card -->
+        <aside class="contact-card">
+          <h3 style="margin:0 0 8px">طرق تواصل سريعة</h3>
+          <div class="muted" style="font-size:14px">Email</div>
+          <div style="margin-bottom:12px;font-weight:700">youssefhany049@gmail.com</div>
+
+          <div class="muted" style="font-size:14px">WhatsApp</div>
+          <div style="margin-bottom:12px;font-weight:700">
+            <a class="btn-outline" href="https://wa.me/201022484250" target="_blank" rel="noopener">افتح محادثة</a>
+          </div>
+
+          <div style="margin-top:16px" class="muted">روابط سريعة</div>
+          <div style="margin-top:8px" class="row">
+            <a class="btn-outline" href="#" onclick="alert('Placeholder - ارفع ملف السيرة الذاتية')">تحميل السيرة</a>
+            <a class="btn-outline" href="#" onclick="alert('Placeholder - رابط أعمال')">متجر أعمال</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> يوسف هاني — جميع الحقوق محفوظة
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Form: open mail client with prefilled content
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById('c_name').value.trim();
+      const email = document.getElementById('c_email').value.trim();
+      const msg = document.getElementById('c_msg').value.trim();
+      const subject = encodeURIComponent('رسالة من بورتفوليو: ' + name);
+      const body = encodeURIComponent(msg + "\\n\\n" + "من: " + name + " — " + email);
+      const mailto = `mailto:youssefhany049@gmail.com?subject=${subject}&body=${body}`;
+      document.getElementById('sentMsg').style.display = 'block';
+      // يفتح تطبيق البريد
+      window.location.href = mailto;
+    }
+  </script>
+</body>
+</html>
